@@ -4,10 +4,10 @@
   --font-sans: 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
   
-  --color-midnight-900: #0D1117; /* Main Background */
-  --color-midnight-800: #161B22; /* Card Background */
-  --color-midnight-700: #21262D; /* Hover State */
-  --color-midnight-border: #30363D; /* Borders */
+  --color-midnight-900: #0D1117;
+  --color-midnight-800: #161B22;
+  --color-midnight-700: #21262D;
+  --color-midnight-border: #30363D;
   
   --color-accent-blue: #58A6FF;
   --color-accent-purple: #BC8CFF;
@@ -15,17 +15,14 @@
   --color-accent-gray: #8B949E;
 }
 
-/* Import Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
-
 body {
   background-color: var(--color-midnight-900);
   color: #C9D1D9;
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  margin: 0;
 }
 
-/* Scrollbar styling for that terminal feel */
 ::-webkit-scrollbar {
   width: 8px;
 }
