@@ -1,4 +1,4 @@
-import { Navbar } from "./components/layout/NavBar";
+import { Navbar } from "./components/layout/Navbar";
 import { Showcase } from "./features/Showcase";
 
 function App() {

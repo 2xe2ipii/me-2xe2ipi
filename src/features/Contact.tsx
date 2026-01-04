@@ -1,43 +1,76 @@
-import { Terminal } from "lucide-react";
+import { Mail, FileText, MapPin } from "lucide-react";
 
 export function Contact() {
   return (
-    // FIX APPLIED: Changed col-span-12 to col-span-full
-    // This prevents the grid from exploding into 12 columns on a 4-column layout.
-    <section className="col-span-full mt-12 mb-8">
-        <div className="rounded-xl border border-midnight-border bg-midnight-800 p-8 md:p-12 text-center relative overflow-hidden">
+    <section className="w-full h-full min-h-[300px]">
+        <div className="h-full group relative rounded-xl border border-midnight-border bg-[#0D1117] overflow-hidden flex flex-col md:flex-row shadow-2xl">
             
-            {/* Background Decor */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-accent-blue/5 blur-3xl rounded-full pointer-events-none" />
-
-            <div className="relative z-10 max-w-2xl mx-auto">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-midnight-900 border border-midnight-border text-xs font-mono text-accent-green mb-6">
-                    <span className="w-2 h-2 rounded-full bg-accent-green animate-pulse" />
-                    Open to Opportunities
-                </div>
+            {/* Soft Background Pattern */}
+            <div 
+                className="absolute inset-0 opacity-[0.1] pointer-events-none"
+                style={{
+                    backgroundImage: `linear-gradient(to right, #21262d 1px, transparent 1px), linear-gradient(to bottom, #21262d 1px, transparent 1px)`,
+                    backgroundSize: '40px 40px'
+                }} 
+            />
+            
+            {/* LEFT: Main Message */}
+            <div className="relative z-10 flex-1 p-8 md:p-12 flex flex-col justify-center">
                 
-                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                    Ready to engineer the next big thing?
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-tight">
+                    Let's work together.
                 </h2>
-                <p className="text-accent-gray mb-8 text-lg">
-                    Whether it's complex backend logic, game development, or AI pipelines, I bring the engineering rigor.
+                
+                <p className="text-gray-400 text-lg max-w-md leading-relaxed mb-8">
+                    I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
                 </p>
 
-                <div className="flex flex-col sm:flex-row justify-center gap-4">
-                    <button className="flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-accent-blue text-midnight-900 font-bold hover:bg-blue-400 transition-colors cursor-pointer">
-                        <Terminal className="w-5 h-5" />
-                        Download Resume
-                    </button>
-                    <button className="px-6 py-3 rounded-lg border border-midnight-border text-white hover:border-white transition-colors cursor-pointer">
-                        Contact Me
+                <div className="flex flex-wrap gap-4">
+                    <a 
+                        href="mailto:drexler@example.com"
+                        className="flex items-center gap-2 px-6 py-3 rounded-lg bg-white text-midnight-900 font-bold hover:bg-gray-200 transition-all hover:-translate-y-1 shadow-lg shadow-white/5"
+                    >
+                        <Mail className="w-5 h-5" />
+                        <span>Send an Email</span>
+                    </a>
+                    <button className="flex items-center gap-2 px-6 py-3 rounded-lg border border-midnight-border text-white font-medium hover:bg-midnight-800 transition-colors">
+                        <FileText className="w-5 h-5" />
+                        <span>Get my Resume</span>
                     </button>
                 </div>
             </div>
-        </div>
-        
-        <div className="mt-8 flex justify-between items-center text-xs font-mono text-midnight-border">
-            <span>© 2026 Drexler Reyes</span>
-            <span>Local: Lipa City, Batangas</span>
+
+            {/* RIGHT: Contact Info (Clean & Simple) */}
+            <div className="relative w-full md:w-1/3 border-t md:border-t-0 md:border-l border-midnight-border bg-midnight-900/50 flex flex-col justify-center p-8 md:p-12">
+                <div className="space-y-6">
+                    <div>
+                        <h3 className="text-gray-500 text-xs uppercase tracking-wider font-semibold mb-2">Location</h3>
+                        <div className="flex items-center gap-2 text-white">
+                            <MapPin className="w-4 h-4 text-accent-blue" />
+                            <span>Lipa City, Batangas</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 className="text-gray-500 text-xs uppercase tracking-wider font-semibold mb-2">Socials</h3>
+                        <div className="flex flex-col gap-2">
+                            <a href="https://linkedin.com" target="_blank" className="text-gray-300 hover:text-white transition-colors">
+                                LinkedIn
+                            </a>
+                            <a href="https://github.com" target="_blank" className="text-gray-300 hover:text-white transition-colors">
+                                GitHub
+                            </a>
+                        </div>
+                    </div>
+
+                    <div className="pt-6 mt-2 border-t border-midnight-border/50">
+                        <p className="text-gray-500 text-xs">
+                            © 2026 Drexler Reyes
+                        </p>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
   );
