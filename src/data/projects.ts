@@ -18,17 +18,17 @@ export const projects: Project[] = [
     id: 'two-letters',
     title: 'Two Letters One Word',
     subtitle: 'Real-Time Multiplayer Engine',
-    description: 'A competitive word game featuring League-style matchmaking queues. Built with WebSockets for sub-millisecond state synchronization between clients.',
+    description: 'A competitive word game featuring League-style matchmaking queues. Built with WebSockets for sub-millisecond state synchronization between clients. I had to architect a custom Redis locking mechanism to prevent race conditions when two players grabbed the same letter at the exact same frame.',
     stack: ['React', 'WebSockets', 'Node.js', 'Redis'],
     category: 'project',
     gridArea: 'flagship',
   },
-  // 2. The Thesis (Tall Right)
+  // 2. The Thesis (Tall Right) -> EXPANDED TEXT TO FILL HEIGHT
   {
     id: 'grammar-heroes',
     title: 'Grammar Heroes',
     subtitle: 'Thesis: NLP Pipeline',
-    description: 'Fine-tuned T5-Base Transformer model to correct grammar. Integrated ERRANT for automated feedback generation. Wrapped in a high-performance API.',
+    description: 'We needed more than just a spellchecker; we needed context awareness. I fine-tuned a T5-Base Transformer model specifically on grammatical error correction datasets. The hardest part wasn\'t the training—it was wrapping that heavy Python model in a high-performance API that could serve real-time suggestions to the Unity game client without lagging the player.',
     stack: ['Python', 'PyTorch', 'FastAPI', 'Unity'],
     category: 'project',
     gridArea: 'tall',
@@ -43,15 +43,15 @@ export const projects: Project[] = [
     category: 'project',
     gridArea: 'wide',
   },
-  // 4. The Wins (Standard)
+  // 4. The Wins (Wide) -> EXPANDED TEXT TO FILL WIDTH
   {
     id: 'comp-prog',
     title: 'Competitive Programming',
     subtitle: 'Representative @ DLSL',
-    description: 'Consistently placing in regionals/nationals. 1st Runner Up Databiz Regional, 3rd Runner Up CodeChum Nationals.',
+    description: 'It’s not just about knowing the syntax; it’s about pattern recognition under pressure. I consistently place in regionals by focusing on Dynamic Programming and Graph Theory. Notable wins include 1st Runner Up at the Databiz Regional and 3rd Runner Up at CodeChum Nationals.',
     stack: ['C++', 'LeetCode', 'Dynamic Prog'],
     category: 'win',
-    gridArea: 'normal',
+    gridArea: 'wide',
   },
   // 5. Creative Tech (Standard)
   {
@@ -73,15 +73,15 @@ export const projects: Project[] = [
     category: 'win',
     gridArea: 'normal',
   },
-  // 7. Leadership (Standard)
+  // 7. Leadership (Wide) -> EXPANDED TEXT TO FILL WIDTH
   {
     id: 'jpcs',
     title: 'JPCS Officer',
     subtitle: '4th Year Representative',
-    description: 'Leading the CS student body. Mentor for junior programming teams and organizer of tech events.',
+    description: 'Leadership in tech isn\'t just about organizing events; it\'s about technical mentorship. As the 4th Year Rep, I restructured how we handle peer tutoring, creating a system where seniors actively code review junior projects. I also spearheaded the organization of our annual Hackathon.',
     stack: ['Leadership', 'Mentoring'],
     category: 'leadership',
-    gridArea: 'normal',
+    gridArea: 'wide',
   },
   // 8. Rapid Fire List (Smaller cards)
   {

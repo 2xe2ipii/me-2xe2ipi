@@ -2,7 +2,9 @@ import { Terminal } from "lucide-react";
 
 export function Contact() {
   return (
-    <section className="col-span-12 mt-12 mb-8">
+    // FIX APPLIED: Changed col-span-12 to col-span-full
+    // This prevents the grid from exploding into 12 columns on a 4-column layout.
+    <section className="col-span-full mt-12 mb-8">
         <div className="rounded-xl border border-midnight-border bg-midnight-800 p-8 md:p-12 text-center relative overflow-hidden">
             
             {/* Background Decor */}
@@ -22,11 +24,11 @@ export function Contact() {
                 </p>
 
                 <div className="flex flex-col sm:flex-row justify-center gap-4">
-                    <button className="flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-accent-blue text-midnight-900 font-bold hover:bg-blue-400 transition-colors">
+                    <button className="flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-accent-blue text-midnight-900 font-bold hover:bg-blue-400 transition-colors cursor-pointer">
                         <Terminal className="w-5 h-5" />
                         Download Resume
                     </button>
-                    <button className="px-6 py-3 rounded-lg border border-midnight-border text-white hover:border-white transition-colors">
+                    <button className="px-6 py-3 rounded-lg border border-midnight-border text-white hover:border-white transition-colors cursor-pointer">
                         Contact Me
                     </button>
                 </div>
