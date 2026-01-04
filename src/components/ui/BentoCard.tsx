@@ -9,16 +9,18 @@ interface BentoCardProps {
 }
 
 export function BentoCard({ project }: BentoCardProps) {
-  // NEW GRID LOGIC (Based on 4 Columns)
+  const isFlagship = project.gridArea === 'flagship';
+  
+  // GRID MATH (Based on 4 Total Columns)
   const sizeClasses = {
-    hero: "", // Handled in Showcase
-    // Flagship: Takes 3 columns (Wide) and 2 rows (Tall) -> Massive center piece
+    hero: "", 
+    // Flagship: Spans 3 columns (75% width)
     flagship: "col-span-1 md:col-span-2 lg:col-span-3 row-span-1 lg:row-span-2", 
-    // Tall: Takes 1 column, 2 rows
+    // Tall: Spans 1 column
     tall: "col-span-1 row-span-1 lg:row-span-2", 
-    // Wide: Takes 2 columns
+    // Wide: Spans 2 columns
     wide: "col-span-1 md:col-span-2", 
-    // Normal: Takes 1 column
+    // Normal: Spans 1 column
     normal: "col-span-1",
     list: "col-span-1",
   };
@@ -27,39 +29,41 @@ export function BentoCard({ project }: BentoCardProps) {
     project: {
       border: "hover:border-accent-blue/50",
       icon: <Code className="w-5 h-5 text-accent-blue" />,
-      glow: "bg-accent-blue/5",
       titleColor: "group-hover:text-accent-blue"
     },
     win: {
       border: "hover:border-amber-500/50",
       icon: <Trophy className="w-5 h-5 text-amber-500" />,
-      glow: "bg-amber-500/5",
       titleColor: "group-hover:text-amber-500"
     },
     leadership: {
       border: "hover:border-emerald-500/50",
       icon: <Users className="w-5 h-5 text-emerald-500" />,
-      glow: "bg-emerald-500/5",
       titleColor: "group-hover:text-emerald-500"
     }
   };
 
   const config = categoryConfig[project.category];
-  const isFlagship = project.gridArea === 'flagship';
 
   return (
     <div className={cn(
       "group relative overflow-hidden rounded-xl border border-midnight-border bg-midnight-800 transition-all duration-300 hover:shadow-lg hover:shadow-accent-blue/5",
       config.border,
       sizeClasses[project.gridArea],
-      isFlagship ? "grid grid-cols-1 lg:grid-cols-3 gap-0" : "flex flex-col justify-between p-6"
+      // FLEXBOX FIX: Ensures Flagship is Side-by-Side on Desktop
+      isFlagship ? "flex flex-col lg:flex-row" : "flex flex-col justify-between p-6"
     )}>
       
-      {/* FLAGSHIP LAYOUT: Content takes 1/3, Terminal takes 2/3 */}
-      <div className={cn("z-10 flex flex-col h-full", isFlagship && "p-6 lg:col-span-1 order-2 lg:order-1 border-r border-midnight-border")}>
+      {/* CONTENT SIDE */}
+      <div className={cn(
+        "z-10 flex flex-col h-full", 
+        // If Flagship, take 40% width. Else take full width.
+        isFlagship ? "p-6 lg:w-[40%] lg:border-r lg:border-midnight-border order-2 lg:order-1 bg-midnight-800" : ""
+      )}>
         
+        {/* Header */}
         <div className="flex justify-between items-start mb-4">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
                 <div className="p-2 rounded-lg bg-midnight-900 border border-midnight-border">
                     {config.icon}
                 </div>
@@ -88,23 +92,21 @@ export function BentoCard({ project }: BentoCardProps) {
         </div>
       </div>
 
-      {/* FLAGSHIP TERMINAL: Takes 2/3 of the card */}
+      {/* TERMINAL SIDE (Flagship Only) */}
       {isFlagship && (
-         <div className="relative h-64 lg:h-auto bg-midnight-900 overflow-hidden order-1 lg:order-2 group-hover:border-accent-blue/30 transition-colors">
-            <div className="absolute inset-0 p-4 lg:p-8">
-                <Terminal />
+         <div className="relative h-64 lg:h-auto lg:w-[60%] bg-[#0D1117] overflow-hidden order-1 lg:order-2 group-hover:border-accent-blue/30 transition-colors">
+            {/* Center the terminal with padding */}
+            <div className="absolute inset-0 p-6 flex items-center justify-center">
+                <div className="w-full max-h-[90%] shadow-2xl">
+                    <Terminal />
+                </div>
             </div>
-            {/* Gradient Fade to blend edges */}
-            <div className="absolute inset-0 bg-gradient-to-r from-midnight-900/50 to-transparent pointer-events-none" />
          </div>
       )}
 
-      {/* Hover Glow for non-flagship */}
+      {/* Hover Glow */}
       {!isFlagship && (
-        <div className={cn(
-            "absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none",
-            config.glow
-        )} />
+        <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 rounded-full bg-accent-blue/5 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
       )}
     </div>
   );
